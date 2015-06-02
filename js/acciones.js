@@ -1,34 +1,41 @@
 // JavaScript Document
 $(document).ready(function(e) {
-//document.addEventListener("deviceready",function(){
-	var x = 1;
-	var sumar1 = 0;
-	var sumar2 = 0;
-	var sumar3 = 0;
-	var sumar4 = 0;
-	
-	$('#uno').on('click', function(){
+document.addEventListener("deviceready",function(){
+	$('#btnjugar').on('tap', function(){
+		var pantalla = $.mobile.getScreenHeight();
+		var encabezado = $('.ui-header').outerHeight();
+		var pie = $('.ui-footer').outerHeight();
+		var contenido = $('ui.content').outerHeight();
+		var alto = (pantalla - encabezado - pie)/2;
+		$('.cuadro').height(alto);
+		});//btnjugar.click
 		
-		sumar1 = sumar1 + x;
-		$('#puntaje1').text(sumar1)
+		$('.cuadro').on('vmousedown', function(){
+			$('#pantalla').append(quien($(this).attr('id')));
+			$(this).addClass('pulsado');
+			});//mousedown
+		
+		function quien (q)
+	{
+		audio.play(q);
+		return q.substring(1);
+	}	
+		
+		$('.cuadro').on('vmouseup', function (){
+			
+			$(this).removeClass('pulsado');
 		});
+		
+		audio = window.plugins.LowLatencyAudio;
+ audio.preloadFX ('B1', 'audio/C.mp3', function () {}, function(msg) {alert("Error " + msg);});
+ audio.preloadFX ('B2', 'audio/D.mp3', function () {}, function(msg) {alert("Error " + msg);});
+ audio.preloadFX ('B3', 'audio/E.mp3', function () {}, function(msg) {alert("Error " + msg);});
+ audio.preloadFX ('B4', 'audio/F.mp3', function () {}, function(msg) {alert("Error " + msg);});
+
 	
-	$('#dos').on ('click', function(){
-		sumar2 = sumar2 + x;
-		$('#puntaje2').text(sumar2)
-	});
-	
-	$('#tres').on ('click', function(){
-		sumar3 = sumar3 + x;
-		$('#puntaje3').text(sumar3)
-	});
-	
-	$('#cuatro').on ('click', function(){
-		sumar4 = sumar4 + x;
-		$('#puntaje4').text(sumar4)
-	});
-		 
-//}); 
+}); 
 });
+
+
 
 
