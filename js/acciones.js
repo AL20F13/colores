@@ -18,10 +18,10 @@ document.addEventListener("deviceready",function(){
 		$('.cuadro').height(alto);
 		});//btnjugar.click
 		
-		$('.cuadro').on('vmousedown', function(){
-			$('#pantalla').append(quien($(this).attr('id')));
-			$(this).addClass('pulsado');
-			});//mousedown
+		//$('.cuadro').on('vmousedown', function(){
+			//$('#pantalla').append(quien($(this).attr('id')));
+			//$(this).addClass('pulsado');
+			//});//mousedown
 		
 		function quien (q)
 	{
@@ -29,10 +29,10 @@ document.addEventListener("deviceready",function(){
 		return q.substring(1);
 	}	
 		
-		$('.cuadro').on('vmouseup', function (){
+		//$('.cuadro').on('vmouseup', function (){
 			
-			$(this).removeClass('pulsado');
-		});
+			//$(this).removeClass('pulsado');
+		//});
 		
 		
 		function cargarnombrejugador ()
@@ -59,7 +59,16 @@ document.addEventListener("deviceready",function(){
 			cargarnombrejugador()
 			
 		});
-
+		
+		function flash (boton)
+        {
+		boton.stop ().animate({opacity:'0.5'}, {
+			duration:80,
+			complete:function(){
+				boton.stop().animate({opacity:'1'}, 200);
+		}
+		});
+      }
 	    
 }); 
 });
