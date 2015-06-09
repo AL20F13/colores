@@ -39,24 +39,27 @@ document.addEventListener("deviceready",function(){
 		{
 			basedatos.transaction(function(ejecutar){
 			var sql="SELECT NombreUsuario FROM Usuario";
-			ejecutar.executeSql(sql, undefinded, function(ejecutar, resultado) {
+			ejecutar.executeSql(sql, undefined, function(ejecutar, resultado) {
 				var datosJugador= resultado.rows.item(0);  
 				$('#jugador').text(datosJugador.NombreUsuario);
 		});			
 		});		
 		}
 		
-		$('#btnconfigurar').on('tap', function () {
-			$('#txtnombre').val ($('#jugador').text());
+		$('#btnconfigurar').on('tap', function(){
+		$('#txtnombre').val($('#jugador').text());	
 		});
 		
-		$('#btnguardar').on('tap', function() {
-			var nuevonombre = $('#txtnombre').val ();
-			basedatos.transaction(function(consulta) {
-				consulta.executeSql("UPDATE Usuario SET NombreUsuario=? WHERE ClaveUsuario='1';",[nuevonombre]);
-			});
-			cargarnombrejugador();
-            });	
+		$('#btnguardar').on('tap',function(){
+			var nuevonombre= $('#txtnombre').val();
+			basedatos.transaction(function(consulta){
+				consulta.executeSql("UPDATE Usuario SET NombreUsuario=? WHERE      ClaveUsuario='1';", [nuevonombre]);
+			});	
+			
+			cargarnombrejugador()
+			
+		});
+
 	    
 }); 
 });
