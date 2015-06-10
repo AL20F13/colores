@@ -69,6 +69,11 @@ document.addEventListener("deviceready",function(){
 		}
 		});
       }
+	  
+	  $('.cuadro').on('tap',function() {
+		  flash ($('this'));
+		  audio.play($(this).attr('id'));
+	  });
 	    
 }); 
 });
