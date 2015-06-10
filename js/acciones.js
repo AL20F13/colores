@@ -62,17 +62,18 @@ document.addEventListener("deviceready",function(){
 		
 		function flash (boton)
         {
-		boton.stop ().animate({opacity:'0.5'}, {
+		boton.stop ().animate({opacity:'0.2'}, {
 			duration:80,
 			complete:function(){
-				boton.stop().animate({opacity:'1'}, 200);
+				audio.play(boton.attr('id'));
+				boton.stop().animate({opacity:'1'}, 300);
 		}
 		});
       }
 	  
 	  $('.cuadro').on('tap',function() {
 		  flash ($('this'));
-		  audio.play($(this).attr('id'));
+		  
 	  });
 	    
 }); 
